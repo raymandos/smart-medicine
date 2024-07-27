@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>SmartMedicine</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="/images/favicon.png" rel="icon">
+    <link href="/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="/vendor/animate.css/animate.min.css" rel="stylesheet">
+    <link href="/vendor/aos/aos.css" rel="stylesheet">
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- ======= Top Bar ======= -->
+<div id="topbar" class="d-flex align-items-center fixed-top">
+    <div class="container d-flex align-items-center justify-content-center justify-content-md-between">
+        <div class="align-items-center d-none d-md-flex">
+            <i class="bi bi-clock"></i> Monday - Saturday, 8AM to 10PM
+        </div>
+        <div class="d-flex align-items-center">
+            <i class="bi bi-phone"></i> Call us now +40 727 496 483
+        </div>
+    </div>
+</div>
+
+<!-- ======= Header ======= -->
+<header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
+
+        <a href="/admin/home" class="logo me-auto"><img th:src="@{/images/logo_img.png}" alt=""></a>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <h1 class="logo me-auto" style="font-size: 20px"><a href="/admin/home">Smart Medicine</a></h1>
+
+        <nav id="navbar" class="navbar order-last order-lg-0">
+            <ul>
+                <li><a class="nav-link scrollto " href="#hero">Home</a></li>
+                <li><a class="nav-link scrollto" href="#about">About</a></li>
+                <li><a class="nav-link scrollto" href="#services">Services</a></li>
+                <li><a class="nav-link scrollto" href="#departments">Departments</a></li>
+                <li><a class="nav-link scrollto" href="#doctors">Doctors</a></li>
+                <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+                <li class="dropdown"><a href="#"><span>Admin Panel</span> <i class="bi bi-chevron-down"></i></a>
+                    <ul>
+                        <li><a href="/admin/user-management">User Management</a></li>
+                        <li><a href="/admin/clinic-management">Clinic Management</a></li>
+                        <li><a href="/admin/doctor-management">Doctor Management</a></li>
+                        <li><a href="/admin/appointment-management">Appointment Management</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav><!-- .navbar -->
+
+        <a href="#appointment" class="appointment-btn scrollto"><span class="d-none d-md-inline">Make an</span> Appointment</a>
+        <div class= "logo me-auto" style = "margin-left: 5%; margin-right: 5%; font-size: 15px"> Hello, <div sec:authentication="name"></div> </div>
+        <div class="logo me-auto"> <a href="/logout"><img src="/images/logout.png" alt="Logout"></a></div>
+    </div>
+</header><!-- End Header -->
+
+<!-- ======= Hero Section ======= -->
+<section id="hero">
+    <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
+
+        <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
+
+        <div class="carousel-inner" role="listbox">
+
+            <!-- Slide 1 -->
+            <div class="carousel-item active" style="background-image: url(/img/slide/slide-1.jpg)">
+                <div class="container">
+                    <h2>Welcome to <span>Smart Medicine</span></h2>
+                    <p>The only medical services platform you'll ever need.</p>
+                    <a href="#about" class="btn-get-started scrollto">Read More</a>
+                </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="carousel-item" style="background-image: url(/img/slide/slide-2.jpg)">
+                <div class="container">
+                    <h2>Licensed medical experts</h2>
+                    <p>You can be certain that all of our partners are experienced in their respective fields.</p>
+                    <a href="#doctors" class="btn-get-started scrollto">Read More</a>
+                </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="carousel-item" style="background-image: url(/img/slide/slide-3.jpg)">
+                <div class="container">
+                    <h2>Quick and easy appointment system</h2>
+                    <p>Make an appointment with just a few clicks and easily cancel any time before the day of the appointment.</p>
+                    <a href="#appointment" class="btn-get-started scrollto">Read More</a>
+                </div>
+            </div>
+
+        </div>
+
+        <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
+        </a>
+
+        <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
+            <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
+        </a>
+
+    </div>
+</section><!-- End Hero -->
+
+<main id="main">
+
+    <!-- ======= Featured Services Section ======= -->
+    <section id="featured-services" class="featured-services">
+        <div class="container" data-aos="fade-up">
+
+            <div class="row">
+                <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                    <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+                        <div class="icon"><i class="fas fa-heartbeat"></i></div>
+                        <h4 class="title"><a href="">Professional Advice</a></h4>
+                        <p class="description">Our partners will make sure you get the appropriate solutions to your medical issues</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                    <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
+                        <div class="icon"><i class="fas fa-pills"></i></div>
+                        <h4 class="title"><a href="">Safe Treatment</a></h4>
+                        <p class="description">You will get the best prescriptions with the least amount of undesired effects</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                    <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
+                        <div class="icon"><i class="fas fa-thermometer"></i></div>
+                        <h4 class="title"><a href="">Redirection</a></h4>
+                        <p class="description">If the doctor is insufficiently qualified, they will redirect you accordingly</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                    <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
+                        <div class="icon"><i class="fas fa-dna"></i></div>
+                        <h4 class="title"><a href="">Proper Tests</a></h4>
+                        <p class="description">Our partnered laboratories will perform all necessary tests for you</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section><!-- End Featured Services Section -->
+
+    <!-- ======= Cta Section ======= -->
+    <section id="cta" class="cta">
+        <div class="container" data-aos="zoom-in">
+
+            <div class="text-center">
+                <h3>In an emergency? Need help now?</h3>
+                <p> Fill out this form and come to the desired point of care for a visit to the doctor</p>
+                <a class="cta-btn scrollto" href="#appointment">Make an Appointment</a>
+            </div>
+
+        </div>
+    </section><!-- End Cta Section -->
+
+    <!-- ======= About Us Section ======= -->
+    <section id="about" class="about">
+        <div class="container" data-aos="fade-up">
+
+            <div class="section-title">
+                <h2>About Us</h2>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <img src="/img/about.jpg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-6 pt-4 pt-lg-0 content" data-aos="fade-left">
+                    <h3>This section is dedicated to the description of the SmartMedicine platform.</h3>
+                    <p class="fst-italic">
+                        Due to this application being a demo, this can be personalized for the specifics of the client.
+                    </p>
+                    <ul>
+                        <li><i class="bi bi-check-circle"></i> The application is fully responsive.</li>
+                        <li><i class="bi bi-check-circle"></i> It employs a modern interface for seamless interaction.</li>
+                        <li><i class="bi bi-check-circle"></i> There is also support for scalability.</li>
+                    </ul>
+                    <p>
+                        SmartMedicine is an application developed by Alexandru Lungu, student at the University Politehnica of Bucharest for the sole purpose of being used as a Bachelor's Thesis project. Distribution of this project without reference is prohibited.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section><!-- End About Us Section -->
+
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services services">
+        <div class="container" data-aos="fade-up">
+
+            <div class="section-title">
+                <h2>Services</h2>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="icon"><i class="fas fa-heartbeat"></i></div>
+                    <h4 class="title"><a href="">Common Diseases</a></h4>
+                    <p class="description">Check out this list of common affections before making an appointment</p>
+                </div>
+                <div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="icon"><i class="fas fa-pills"></i></div>
+                    <h4 class="title"><a href="">Drug List</a></h4>
+                    <p class="description">Check out this list of medicine products available on the market</p>
+                </div>
+                <div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="icon"><i class="fas fa-hospital-user"></i></div>
+                    <h4 class="title"><a href="/my-appointments">Your Appointments</a></h4>
+                    <p class="description">Check or cancel your appointments without an account</p>
+                </div>
+            </div>
+
+        </div>
+    </section><!-- End Services Section -->
+
+    <!-- ======= Appointment Section ======= -->
+    <section id="appointment" class="appointment section-bg">
+        <div class="container" data-aos="fade-up">
+
+            <div class="section-title">
+                <h2>Make an Appointment</h2>
+            </div>
+
+            <form action="/appointment" method="post" role="form" class="php-email-form" data-aos="fade-up" data-aos-delay="100">
+                <div class="row">
+                    <div class="col-md-4 form-group">
+                        <input type="text" name="firstName" class="form-control" id="firstName" placeholder="First Name" required>
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <input type="text" name="lastName" class="form-control" id="lastName" placeholder="Last Name" required>
+                    </div>
+                    <div class="col-md-4 form-group mt-3 mt-md-0">
+                        <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="col-md-4 form-group mt-3 mt-md-0">
+                        <input type="tel" class="form-control" name="phone" id="phone" placeholder="Your Phone" required>
+                    </div>
+                    <div class="col-md-4">
+                        <select name="clinic" id="clinic" class="form-select">
+                            <option value="">Select Clinic</option>
+                            <option th:each="clinic : ${clinics}" th:text="${clinic.name}" th:value="${clinic.id}"></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 form-group mt-3">
+                        <input type="datetime-local" th:min="${#dates.createNow()}" name="appointmentTime" class="form-control datepicker" id="date" placeholder="Appointment Date" required>
+                    </div>
+                    <div class="col-md-4 form-group mt-3">
+                        <select name="department" id="department" class="form-select">
+                            <option value="">Select Department</option>
+                            <option th:each="department : ${departments}" th:text="${department.name}" th:value="${department.id}"></option>
+                        </select>
+                    </div>
+                    <div class="col-md-4 form-group mt-3">
+                        <select name="doctor" id="doctor" class="form-select">
+                            <option value="">Select Doctor</option>
+                            <option th:each="doctor : ${doctors}" th:text="${doctor.name}" th:value="${doctor.id}"></option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group mt-3">
+                    <textarea class="form-control" name="details" rows="5" placeholder="Message (Optional)"></textarea>
+                </div>
+                <div class="my-3">
+                    <div class="loading">Loading</div>
+                    <div class="error-message"></div>
+                    <div class="sent-message">Your appointment request has been sent successfully. Thank you!</div>
+                </div>
+                <div class="text-center"><button type="submit">Make an Appointment</button></div>
+            </form>
+
+        </div>
+    </section><!-- End Appointment Section -->
+
+    <!-- ======= Departments Section ======= -->
+    <section id="departments" class="departments">
+        <div class="container" data-aos="fade-up">
+
+            <div class="section-title">
+                <h2>Departments</h2>
+            </div>
+
+            <div class="row" data-aos="fade-up" data-aos-delay="100">
+                <div class="col-lg-4 mb-5 mb-lg-0">
+                    <ul class="nav nav-tabs flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#tab-1">
+                                <h4>Cardiology</h4>
+                            </a>
+                        </li>
+                        <li class="nav-item mt-2">
+                            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-2">
+                                <h4>Neurology</h4>
+                            </a>
+                        </li>
+                        <li class="nav-item mt-2">
+                            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-3">
+                                <h4>Hepatology</h4>
+                            </a>
+                        </li>
+                        <li class="nav-item mt-2">
+                            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-4">
+                                <h4>Pediatrics</h4>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-8">
+                    <div class="tab-content">
+                        <div class="tab-pane active show" id="tab-1">
+                            <h3>Cardiology</h3>
+                            <p class="fst-italic"> Medical specialty dealing with the diagnosis and treatment of diseases and abnormalities involving the heart and blood vessels.</p>
+                            <img src="/img/departments-1.jpg" alt="" class="img-fluid">
+                            <p>Cardiology is a medical, not surgical, discipline. Cardiologists provide the continuing care of patients with cardiovascular disease, performing basic studies of heart function and supervising all aspects of therapy, including the administration of drugs to modify heart functions.</p>
+                        </div>
+                        <div class="tab-pane" id="tab-2">
+                            <h3>Neurology</h3>
+                            <p class="fst-italic"> Neurology is the branch of medicine dealing with the diagnosis and treatment of all categories of conditions and disease involving the nervous system, which comprises the brain, the spinal cord and the peripheral nerves.</p>
+                            <img src="/img/departments-3.jpg" alt="" class="img-fluid">
+                            <p>A neurologist is a physician specializing in neurology and trained to investigate, diagnose and treat neurological disorders. Neurologists diagnose and treat myriad neurologic conditions, including stroke, epilepsy, movement disorders such as Parkinson's disease, brain infections.</p>
+                        </div>
+                        <div class="tab-pane" id="tab-3">
+                            <h3>Hepatology</h3>
+                            <p class="fst-italic">Hepatology is an area of medicine that focuses on diseases of the liver as well as related conditions.</p>
+                            <img src="/img/departments-2.jpg" alt="" class="img-fluid">
+                            <p>Hepatology’s primary focus is on the liver. This essential organ is responsible for helping to digest the foods you eat as well as supporting your metabolism and getting rid of toxins. The liver also helps store and process fat-soluble vitamins, such as vitamin D3 and vitamin E.</p>
+                        </div>
+                        <div class="tab-pane" id="tab-4">
+                            <h3>Pediatrics</h3>
+                            <p class="fst-italic">Pediatrics is the branch of medicine that involves the medical care of infants, children, adolescents, and young adults.</p>
+                            <img src="/img/departments-4.jpg" alt="" class="img-fluid">
+                            <p>The body size differences are paralleled by maturation changes. The smaller body of an infant or neonate is substantially different physiologically from that of an adult. Congenital defects, genetic variance, and developmental issues are of greater concern to pediatricians than they often are to adult physicians.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section><!-- End Departments Section -->
+
+    <!-- ======= Doctors Section ======= -->
+    <section id="doctors" class="doctors section-bg">
+        <div class="container" data-aos="fade-up">
+
+            <div class="section-title">
+                <h2>Doctors</h2>
+            </div>
+
+            <div class="row">
+
+                <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+                    <div class="member" data-aos="fade-up" data-aos-delay="100">
+                        <div class="member-img">
+                            <img src="/img/doctors/doctors-1.jpg" class="img-fluid" alt="">
+                            <div class="social">
+                                <a href=""><i class="bi bi-twitter"></i></a>
+                                <a href=""><i class="bi bi-facebook"></i></a>
+                                <a href=""><i class="bi bi-instagram"></i></a>
+                                <a href=""><i class="bi bi-linkedin"></i></a>
+                            </div>
+                        </div>
+                        <div class="member-info">
+                            <h4>Ivan Turbinca</h4>
+                            <span>Cardiology</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+                    <div class="member" data-aos="fade-up" data-aos-delay="200">
+                        <div class="member-img">
+                            <img src="/img/doctors/doctors-2.jpg" class="img-fluid" alt="">
+                            <div class="social">
+                                <a href=""><i class="bi bi-twitter"></i></a>
+                                <a href=""><i class="bi bi-facebook"></i></a>
+                                <a href=""><i class="bi bi-instagram"></i></a>
+                                <a href=""><i class="bi bi-linkedin"></i></a>
+                            </div>
+                        </div>
+                        <div class="member-info">
+                            <h4>Ileana Cosanzeana</h4>
+                            <span>Pediatrics</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+                    <div class="member" data-aos="fade-up" data-aos-delay="300">
+                        <div class="member-img">
+                            <img src="/img/doctors/doctors-3.jpg" class="img-fluid" alt="">
+                            <div class="social">
+                                <a href=""><i class="bi bi-twitter"></i></a>
+                                <a href=""><i class="bi bi-facebook"></i></a>
+                                <a href=""><i class="bi bi-instagram"></i></a>
+                                <a href=""><i class="bi bi-linkedin"></i></a>
+                            </div>
+                        </div>
+                        <div class="member-info">
+                            <h4>Mihai Viteazul</h4>
+                            <span>Hepatology</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+                    <div class="member" data-aos="fade-up" data-aos-delay="400">
+                        <div class="member-img">
+                            <img src="/img/doctors/doctors-4.jpg" class="img-fluid" alt="">
+                            <div class="social">
+                                <a href=""><i class="bi bi-twitter"></i></a>
+                                <a href=""><i class="bi bi-facebook"></i></a>
+                                <a href=""><i class="bi bi-instagram"></i></a>
+                                <a href=""><i class="bi bi-linkedin"></i></a>
+                            </div>
+                        </div>
+                        <div class="member-info">
+                            <h4>Irinuca Creanga</h4>
+                            <span>Neurology</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section><!-- End Doctors Section -->
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Contact</h2>
+                <p>Ne puteti gasi fizic la aceasta adresa sau cu un mesaj la adresele de email specificate.</p>
+            </div>
+
+        </div>
+
+        <div>
+            <iframe style="border:0; width: 100%; height: 350px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2848.912830802003!2d26.045181312672963!3d44.434950270955085!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b201274a6d1f75%3A0x712c060040189cde!2sPRECIS%20-%20Facultatea%20de%20Automatic%C4%83%20%C8%99i%20Calculatoare!5e0!3m2!1sro!2sro!4v1716059240209!5m2!1sro!2sro" frameborder="0" allowfullscreen></iframe>
+        </div>
+
+        <div class="container">
+
+            <div class="row mt-5">
+
+                <div class="col-lg-6">
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="info-box">
+                                <i class="bx bx-map"></i>
+                                <h3>Our Address</h3>
+                                <p>Blvd Iuliu Maniu 6D</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="info-box mt-4">
+                                <i class="bx bx-envelope"></i>
+                                <h3>Email Us</h3>
+                                <p>info@smartmedicine.com<br>contact@smartmedicine.com</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="info-box mt-4">
+                                <i class="bx bx-phone-call"></i>
+                                <h3>Call Us</h3>
+                                <p><br>+40 727 496 483</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section><!-- End Contact Section -->
+
+</main><!-- End #main -->
+
+<!-- ======= Footer ======= -->
+<footer id="footer">
+    <div class="footer-top">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-info">
+                        <h3>Smart Medicine</h3>
+                        <p>
+                            Blvd Iuliu Maniu 6D <br>
+                            Bucharest, Sector 6, Romania<br><br>
+                            <strong>Phone:</strong> +40 727 496 483<br>
+                            <strong>Email:</strong> info@smartmedicine.com<br>
+                        </p>
+                        <div class="social-links mt-3">
+                            <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+                            <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                            <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                            <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+                            <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-6 footer-links">
+                    <h4>Useful Links</h4>
+                    <ul>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-4 col-md-6 footer-newsletter">
+                    <h4>Our Newsletter</h4>
+                    <p>Subscribe to our newsletter.</p>
+                    <form action="" method="post">
+                        <input type="email" name="email"><input type="submit" value="Subscribe">
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="copyright">
+            &copy; Copyright <strong><span>Smart Medicine</span></strong>. All Rights Reserved
+        </div>
+    </div>
+</footer><!-- End Footer -->
+
+<div id="preloader"></div>
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+<!-- Vendor JS Files -->
+<script src="/vendor/purecounter/purecounter_vanilla.js"></script>
+<script src="/vendor/aos/aos.js"></script>
+<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="/vendor/swiper/swiper-bundle.min.js"></script>
+
+<!-- Template Main JS File -->
+<script src="/js/main.js"></script>
+
+</body>
+
+</html>

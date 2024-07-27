@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>User Management</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="/images/favicon.png" rel="icon">
+    <link href="/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="/vendor/animate.css/animate.min.css" rel="stylesheet">
+    <link href="/vendor/aos/aos.css" rel="stylesheet">
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="/css/user-styles.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- ======= Top Bar ======= -->
+<div id="topbar" class="d-flex align-items-center fixed-top">
+    <div class="container d-flex align-items-center justify-content-center justify-content-md-between">
+        <div class="align-items-center d-none d-md-flex">
+            <i class="bi bi-clock"></i> Monday - Saturday, 8AM to 10PM
+        </div>
+        <div class="d-flex align-items-center">
+            <i class="bi bi-phone"></i> Call us now +40 727 496 483
+        </div>
+    </div>
+</div>
+
+
+<header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
+
+        <a href="/admin/home" class="logo me-auto"><img th:src="@{/images/logo_img.png}" alt=""></a>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <h1 class="logo me-auto" style="font-size: 20px"><a href="/admin/home">Smart Medicine</a></h1>
+
+        <nav id="navbar" class="navbar order-last order-lg-0">
+            <ul>
+                <li><a class="nav-link scrollto " href="/admin/home#hero">Home</a></li>
+                <li><a class="nav-link scrollto" href="/admin/home#about">About</a></li>
+                <li><a class="nav-link scrollto" href="/admin/home#services">Services</a></li>
+                <li><a class="nav-link scrollto" href="/admin/home#departments">Departments</a></li>
+                <li><a class="nav-link scrollto" href="/admin/home#doctors">Doctors</a></li>
+                <li><a class="nav-link scrollto" href="/admin/home#contact">Contact</a></li>
+                <li class="dropdown"><a href="#"><span>Admin Panel</span> <i class="bi bi-chevron-down"></i></a>
+                    <ul>
+                        <li><a href="/admin/user-management">User Management</a></li>
+                        <li><a href="/admin/clinic-management">Clinic Management</a></li>
+                        <li><a href="/admin/doctor-management">Doctor Management</a></li>
+                        <li><a href="/admin/appointment-management">Appointment Management</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav><!-- .navbar -->
+        <div class= "logo me-auto" style = "margin-left: 5%; margin-right: 5%; font-size: 15px"> Hello, <div sec:authentication="name"></div> </div>
+        <div class="logo me-auto"> <a href="/logout"><img src="/images/logout.png" alt="Logout"></a></div>
+    </div>
+</header><!-- End Header -->
+
+<main id="main">
+
+    <!-- ======= Breadcrumbs Section ======= -->
+    <section class="breadcrumbs">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>Appointment Management</h2>
+                <ol>
+                    <li><a href="/admin/home">Home</a></li>
+                    <li>Appointment Management</li>
+                </ol>
+            </div>
+
+        </div>
+    </section><!-- End Breadcrumbs Section -->
+
+    <section class="inner-page">
+        <div class="container">
+            <!-- Generate modals for each appointment -->
+            <div th:each="appointment : ${appointments}">
+                <div class="modal fade" th:id="'editAppointmentModal' + ${appointment.id}" tabindex="-1" aria-labelledby="editAppointmentModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" th:id="'editAppointmentModalLabel' + ${appointment.id}">Edit Appointment</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <form th:action="@{'/admin/appointment-management/edit/' + ${appointment.id}}" method="post">
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label for="appointmentStatus">Status</label>
+                                        <select class="form-select" id="appointmentStatus" name="status">
+                                            <option th:value="Pending" th:selected="${appointment.status == 'Pending'}">Pending</option>
+                                            <option th:value="Confirmed" th:selected="${appointment.status == 'Confirmed'}">Confirmed</option>
+                                            <option th:value="Cancelled" th:selected="${appointment.status == 'Cancelled'}">Cancelled</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="user-table">
+                    <thead>
+                    <tr>
+                        <th>Doctor</th>
+                        <th>Clinic</th>
+                        <th>Department</th>
+                        <th>E-mail</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Phone</th>
+                        <th>Appointment Time</th>
+                        <th>Status</th>
+                        <th>Details</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="appointment : ${appointments}">
+                        <td th:text="${appointment.getDoctor().getName()}">appointment.doctor.name</td>
+                        <td th:text="${appointment.getClinic().getName()}">appointment.clinic.name</td>
+                        <td th:text="${appointment.getDepartment().getName()}">appointment.clinic.name</td>
+                        <td th:text="${appointment.email}">appointment.email</td>
+                        <td th:text="${appointment.firstName}">appointment.firstName</td>
+                        <td th:text="${appointment.lastName}">appointment.lastName</td>
+                        <td th:text="${appointment.phone}">appointment.phone</td>
+                        <td th:text="${appointment.appointmentTime}">appointment.appointmentTime</td>
+                        <td th:text="${appointment.status}">appointment.status</td>
+                        <td th:text="${appointment.details}">appointment.details</td>
+                        <td>
+                            <a role="button"  data-bs-toggle="modal" th:data-bs-target="'#editAppointmentModal' + ${appointment.id}"><img src="/images/edit-icon.png" alt="Edit"></a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+</main><!-- End #main -->
+
+<!-- ======= Footer ======= -->
+<footer id="footer">
+    <div class="footer-top">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-info">
+                        <h3>Smart Medicine</h3>
+                        <p>
+                            Blvd Iuliu Maniu 6D <br>
+                            Bucharest, Sector 6, Romania<br><br>
+                            <strong>Phone:</strong> +40 727 496 483<br>
+                            <strong>Email:</strong> info@smartmedicine.com<br>
+                        </p>
+                        <div class="social-links mt-3">
+                            <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+                            <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                            <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                            <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+                            <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-6 footer-links">
+                    <h4>Useful Links</h4>
+                    <ul>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-4 col-md-6 footer-newsletter">
+                    <h4>Our Newsletter</h4>
+                    <p>Subscribe to our newsletter.</p>
+                    <form action="" method="post">
+                        <input type="email" name="email"><input type="submit" value="Subscribe">
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="copyright">
+            &copy; Copyright <strong><span>Smart Medicine</span></strong>. All Rights Reserved
+        </div>
+    </div>
+</footer><!-- End Footer -->
+
+<div id="preloader"></div>
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+<!-- Vendor JS Files -->
+<script src="/vendor/purecounter/purecounter_vanilla.js"></script>
+<script src="/vendor/aos/aos.js"></script>
+<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="/vendor/swiper/swiper-bundle.min.js"></script>
+
+<!-- Template Main JS File -->
+<script src="/js/main.js"></script>
+
+</body>
+
+</html>
