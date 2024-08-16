@@ -29,7 +29,7 @@ I retain all rights to my source code and no one may reproduce, distribute, or c
 - Run the application using the IDE of your choice
 - Access the application at `localhost:8080/` or any other default domain specified in the application properties.
 
-## ₿ Features
+## ⚕️ Features
 - Responsive and very accesible design throughout the entire UI.
 - Three types of user: NON-USER, USER and ADMIN with respective permissions.
 - Relatively robust security due to the use of the Spring Security library.
